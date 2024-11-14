@@ -65,10 +65,8 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public ResponseWrapper<List<User>> getAllUsers() {
-        List<User> users = userRepository.findAll();
-        if (users.isEmpty()) {
-            return ResponseWrapper.error(HttpStatus.NOT_FOUND.value(), ErrorMessages.USERS_NOT_FOUND);
-        }
+        final List<User> users = userRepository.findAll();
+
         return ResponseWrapper.success(users);
     }
 
@@ -94,7 +92,7 @@ public class UserServiceImpl implements UserService {
         }
 
         try {
-            User savedUser = userRepository.save(user);
+            final User savedUser = userRepository.save(user);
             return ResponseWrapper.success(savedUser, SuccessMessages.USER_CREATED);
         } catch (Exception e) {
             return ResponseWrapper.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ErrorMessages.GENERAL_ERROR);
@@ -110,12 +108,12 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public ResponseWrapper<User> updateUser(String id, User user) {
-        Optional<User> existingUserOptional = userRepository.findById(id);
+        final Optional<User> existingUserOptional = userRepository.findById(id);
         if (existingUserOptional.isEmpty()) {
             return ResponseWrapper.error(HttpStatus.NOT_FOUND.value(), ErrorMessages.USER_NOT_FOUND);
         }
 
-        User existingUser = existingUserOptional.get();
+        final User existingUser = existingUserOptional.get();
         if (user.getEmail() != null && !user.getEmail().equals(existingUser.getEmail())) {
             if (userRepository.findByEmail(user.getEmail()) != null) {
                 return ResponseWrapper.error(HttpStatus.CONFLICT.value(), ErrorMessages.EMAIL_ALREADY_USED);
@@ -126,7 +124,7 @@ public class UserServiceImpl implements UserService {
         if (user.getEmail() != null) existingUser.setEmail(user.getEmail());
 
         try {
-            User updatedUser = userRepository.save(existingUser);
+            final User updatedUser = userRepository.save(existingUser);
             return ResponseWrapper.success(updatedUser, SuccessMessages.USER_UPDATED);
         } catch (Exception e) {
             return ResponseWrapper.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ErrorMessages.GENERAL_ERROR);
@@ -141,7 +139,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public ResponseWrapper<Void> deleteUserById(String id) {
-        Optional<User> user = userRepository.findById(id);
+        final Optional<User> user = userRepository.findById(id);
         if (user.isPresent()) {
             userRepository.delete(user.get());
             return ResponseWrapper.success(null, SuccessMessages.USER_DELETED);
@@ -158,7 +156,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public ResponseWrapper<List<User>> getUsersByName(String name) {
-        List<User> users = userRepository.findByName(name);
+        final List<User> users = userRepository.findByName(name);
         return ResponseWrapper.success(users);
     }
 
