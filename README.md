@@ -24,11 +24,11 @@ This is a simple Java Spring Boot application designed to manage user data with 
 
 ### Technologies Used
 
-- Java 11+
-- Spring Boot
-- Spring Data JPA
-- H2 Database (or configure your own)
-- Maven
+- Java 17+: Supports modern Java versions.
+- Spring Boot: Core framework for building web applications and services.
+- Spring Data MongoDB: Simplifies data management with MongoDB.
+- Velocity: Template engine for generating dynamic content.
+- Maven: Dependency management and build automation tool.
 
 ---
 
@@ -36,7 +36,7 @@ This is a simple Java Spring Boot application designed to manage user data with 
 
 #### Prerequisites
 
-- Java 11 or higher
+- Java 17 or higher
 - Maven
 - Git
 
