@@ -8,6 +8,7 @@ This is a simple Java Spring Boot application designed to manage user data with 
 3. [Setup and Installation](#setup-and-installation)
 4. [Endpoints](#endpoints)
 5. [Error Handling](#error-handling)
+6. [Postman Collection](#postman-collection)
 
 ---
 
@@ -109,3 +110,8 @@ This application uses a custom `ResponseWrapper` class to standardize API respon
 - Invalid Email Format: Returned when the provided email is invalid.
 - User Not Found: Returned when no user is found for the specified criteria.
 - Email Already Used: Returned when attempting to create or update a user with an email that already exists.
+
+### Postman Collection
+You can download Postman collection from `postman` folder. Its appearance is as follows:
+
+<img width="276" alt="postman_collection" src="https://github.com/user-attachments/assets/3131b107-311a-4636-9d0f-6c1374f55228">
