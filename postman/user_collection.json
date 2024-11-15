@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n  \"name\": \"Bedirhan Sağlam\",\n  \"email\": \"baba2722@gmail.com\"\n}\n",
+					"raw": "{\n  \"name\": \"Bedirhan Sağlam\",\n  \"email\": \"bedirhansaglam270@gmail.com\"\n}\n",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -40,7 +40,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"name\": \"Bedirhan Sağlam\",\n  \"email\": \"bedirhansaglam2@gmail.com\"\n}\n",
+							"raw": "{\n  \"name\": \"Bedirhan Sağlam\",\n  \"email\": \"bedirhansaglam270@gmail.com\"\n}\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -59,8 +59,8 @@
 							]
 						}
 					},
-					"status": "Created",
-					"code": 201,
+					"status": "OK",
+					"code": 200,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
@@ -73,7 +73,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 14 Nov 2024 13:41:22 GMT"
+							"value": "Fri, 15 Nov 2024 12:28:00 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -85,7 +85,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"code\": 200,\n    \"data\": {\n        \"id\": \"6735fe0256e950757913008c\",\n        \"name\": \"Bedirhan Sağlam\",\n        \"email\": \"bedirhansaglam2@gmail.com\"\n    },\n    \"message\": \"User created successfully.\"\n}"
+					"body": "{\n    \"code\": 200,\n    \"data\": {\n        \"id\": \"67373e50db909d4241ee50c2\",\n        \"name\": \"Bedirhan Sağlam\",\n        \"email\": \"bedirhansaglam270@gmail.com\"\n    },\n    \"message\": \"User created successfully.\"\n}"
 				},
 				{
 					"name": "email-already-in-use",
@@ -212,7 +212,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6736064ce887aa5626555380"
+							"value": "67373b32e1192b3e3bb4b3e2"
 						}
 					]
 				}
@@ -289,13 +289,13 @@
 							"variable": [
 								{
 									"key": "id",
-									"value": "6736008cdeaeb9142bc0ed92"
+									"value": "67373b32e1192b3e3bb4b3e222"
 								}
 							]
 						}
 					},
-					"status": "Not Found",
-					"code": 404,
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
@@ -308,7 +308,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 14 Nov 2024 13:52:55 GMT"
+							"value": "Fri, 15 Nov 2024 12:26:34 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -320,7 +320,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"code\": 404,\n    \"data\": null,\n    \"message\": \"User not found.\"\n}"
+					"body": "{\n    \"code\": 422,\n    \"data\": null,\n    \"message\": \"User not found.\"\n}"
 				}
 			]
 		},
@@ -395,7 +395,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/email/:email",
+					"raw": "http://localhost:8080/users/email/:email?email=bedirhansaglam1@gmail.com",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -406,10 +406,16 @@
 						"email",
 						":email"
 					],
+					"query": [
+						{
+							"key": "email",
+							"value": "bedirhansaglam1@gmail.com"
+						}
+					],
 					"variable": [
 						{
 							"key": "email",
-							"value": "bedirhansaglam2@gmail.com"
+							"value": ""
 						}
 					]
 				}
@@ -421,7 +427,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/email/:email",
+							"raw": "http://localhost:8080/users/email/:email?email=bedirhansaglam270@gmail.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -432,10 +438,16 @@
 								"email",
 								":email"
 							],
+							"query": [
+								{
+									"key": "email",
+									"value": "bedirhansaglam270@gmail.com"
+								}
+							],
 							"variable": [
 								{
 									"key": "email",
-									"value": "bedirhansaglam2@gmail.com"
+									"value": ""
 								}
 							]
 						}
@@ -445,10 +457,6 @@
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
-							"key": "Content-Disposition",
-							"value": "inline;filename=f.txt"
-						},
-						{
 							"key": "Content-Type",
 							"value": "application/json"
 						},
@@ -458,7 +466,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 14 Nov 2024 14:11:32 GMT"
+							"value": "Fri, 15 Nov 2024 12:28:42 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -470,7 +478,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"code\": 200,\n    \"data\": {\n        \"id\": \"673600a3deaeb9142bc0ed94\",\n        \"name\": \"Bedirhan Sağlam\",\n        \"email\": \"bedirhansaglam2@gmail.com\"\n    },\n    \"message\": null\n}"
+					"body": "{\n    \"code\": 200,\n    \"data\": {\n        \"id\": \"67373e50db909d4241ee50c2\",\n        \"name\": \"Bedirhan Sağlam\",\n        \"email\": \"bedirhansaglam270@gmail.com\"\n    },\n    \"message\": null\n}"
 				},
 				{
 					"name": "user-not-found",
@@ -478,7 +486,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/email/:email",
+							"raw": "http://localhost:8080/users/email/:email?email=bedirhansaglam1@gmail.com",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -489,22 +497,24 @@
 								"email",
 								":email"
 							],
+							"query": [
+								{
+									"key": "email",
+									"value": "bedirhansaglam1@gmail.com"
+								}
+							],
 							"variable": [
 								{
 									"key": "email",
-									"value": "bedirhansaglam22@gmail.com"
+									"value": ""
 								}
 							]
 						}
 					},
-					"status": "Not Found",
-					"code": 404,
+					"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+					"code": 422,
 					"_postman_previewlanguage": "json",
 					"header": [
-						{
-							"key": "Content-Disposition",
-							"value": "inline;filename=f.txt"
-						},
 						{
 							"key": "Content-Type",
 							"value": "application/json"
@@ -515,7 +525,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 14 Nov 2024 14:11:44 GMT"
+							"value": "Fri, 15 Nov 2024 12:30:09 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -527,7 +537,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"code\": 404,\n    \"data\": null,\n    \"message\": \"User not found.\"\n}"
+					"body": "{\n    \"code\": 422,\n    \"data\": null,\n    \"message\": \"User not found.\"\n}"
 				}
 			]
 		},
@@ -537,7 +547,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/users/name/:name",
+					"raw": "http://localhost:8080/users/name/?name=Ali",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -546,12 +556,12 @@
 					"path": [
 						"users",
 						"name",
-						":name"
+						""
 					],
-					"variable": [
+					"query": [
 						{
 							"key": "name",
-							"value": "Bedirhan Sağlam"
+							"value": "Ali"
 						}
 					]
 				}
@@ -563,7 +573,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/name/:name",
+							"raw": "http://localhost:8080/users/name/?name=Bedirhan Sağlam",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -572,9 +582,9 @@
 							"path": [
 								"users",
 								"name",
-								":name"
+								""
 							],
-							"variable": [
+							"query": [
 								{
 									"key": "name",
 									"value": "Bedirhan Sağlam"
@@ -596,7 +606,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 14 Nov 2024 14:11:56 GMT"
+							"value": "Fri, 15 Nov 2024 12:30:19 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -608,7 +618,7 @@
 						}
 					],
 					"cookie": [],
-					"body": "{\n    \"code\": 200,\n    \"data\": [\n        {\n            \"id\": \"673600a3deaeb9142bc0ed94\",\n            \"name\": \"Bedirhan Sağlam\",\n            \"email\": \"bedirhansaglam2@gmail.com\"\n        },\n        {\n            \"id\": \"673604b7b15b233019b8d275\",\n            \"name\": \"Bedirhan Sağlam\",\n            \"email\": \"bedirhansaglam3@gmail.com\"\n        }\n    ],\n    \"message\": null\n}"
+					"body": "{\n    \"code\": 200,\n    \"data\": [\n        {\n            \"id\": \"673663988e715b2df417cd4d\",\n            \"name\": \"Bedirhan Sağlam\",\n            \"email\": \"bedirhansaglam312@gmail.com\"\n        },\n        {\n            \"id\": \"67373e50db909d4241ee50c2\",\n            \"name\": \"Bedirhan Sağlam\",\n            \"email\": \"bedirhansaglam270@gmail.com\"\n        }\n    ],\n    \"message\": null\n}"
 				},
 				{
 					"name": "empty",
@@ -616,7 +626,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/users/name/:name",
+							"raw": "http://localhost:8080/users/name/?name=Ali",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -625,12 +635,12 @@
 							"path": [
 								"users",
 								"name",
-								":name"
+								""
 							],
-							"variable": [
+							"query": [
 								{
 									"key": "name",
-									"value": "Bedirhan"
+									"value": "Ali"
 								}
 							]
 						}
@@ -649,7 +659,7 @@
 						},
 						{
 							"key": "Date",
-							"value": "Thu, 14 Nov 2024 14:13:35 GMT"
+							"value": "Fri, 15 Nov 2024 12:30:42 GMT"
 						},
 						{
 							"key": "Keep-Alive",
@@ -684,7 +694,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "673604b7b15b233019b8d275"
+							"value": "673663988e715b2df417cd4d"
 						}
 					]
 				}
@@ -772,7 +782,7 @@
 					"variable": [
 						{
 							"key": "id",
-							"value": "6736110f254c772ff9b06a45"
+							"value": "673663988e715b2df417cd4d"
 						}
 					]
 				}
