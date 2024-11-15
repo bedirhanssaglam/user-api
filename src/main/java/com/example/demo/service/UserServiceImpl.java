@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
     public ResponseWrapper<User> getUserByEmail(String email) {
         try {
             String decodedEmail = URLDecoder.decode(email, StandardCharsets.UTF_8);
-            if (Validators.isValidEmailFormat(decodedEmail)) {
+            if (!Validators.isValidEmailFormat(decodedEmail)) {
                 return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.INVALID_EMAIL);
             }
 
@@ -81,7 +81,7 @@ public class UserServiceImpl implements UserService {
         if (!isValidUserData(user)) {
             return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.MISSING_USER_DATA);
         }
-        if (Validators.isValidEmailFormat(user.getEmail())) {
+        if (!Validators.isValidEmailFormat(user.getEmail())) {
             return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.INVALID_EMAIL);
         }
         if (userRepository.findByEmail(user.getEmail()) != null) {

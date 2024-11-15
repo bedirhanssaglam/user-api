@@ -9,5 +9,4 @@ public class ErrorMessages {
     public static final String EMAIL_ALREADY_USED = "Email is already in use.";
     public static final String NAME_TOO_LONG = "Name is too long.";
     public static final String GENERAL_ERROR = "An unexpected error occurred.";
-    public static final String INVALID_ID_FORMAT = "The provided ID format is invalid.";
 }
