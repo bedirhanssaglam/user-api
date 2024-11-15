@@ -1,8 +1,9 @@
-package com.example.demo.service;
+package com.example.demo.service.impl;
 
 import com.example.demo.models.ResponseWrapper;
 import com.example.demo.models.User;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserService;
 import com.example.demo.utils.constants.ErrorMessages;
 import com.example.demo.utils.constants.SuccessMessages;
 import com.example.demo.utils.validators.Validators;
@@ -10,8 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.net.URLDecoder;
-import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +30,7 @@ public class UserServiceImpl implements UserService {
     public ResponseWrapper<User> getUserById(String id) {
         return userRepository.findById(id)
                 .map(ResponseWrapper::success)
-                .orElse(ResponseWrapper.error(HttpStatus.UNPROCESSABLE_ENTITY.value(), ErrorMessages.USER_NOT_FOUND));
+                .orElse(ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.USER_NOT_FOUND));
     }
 
     /**
@@ -42,20 +41,15 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public ResponseWrapper<User> getUserByEmail(String email) {
-        try {
-            String decodedEmail = URLDecoder.decode(email, StandardCharsets.UTF_8);
-            if (!Validators.isValidEmail(decodedEmail)) {
-                return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.INVALID_EMAIL);
-            }
-
-            final User user = userRepository.findByEmail(decodedEmail);
-            if (user == null) {
-                return ResponseWrapper.error(HttpStatus.UNPROCESSABLE_ENTITY.value(), ErrorMessages.USER_NOT_FOUND);
-            }
-            return ResponseWrapper.success(user);
-        } catch (Exception e) {
-            return ResponseWrapper.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ErrorMessages.GENERAL_ERROR);
+        if (!Validators.isValidEmail(email)) {
+            return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.INVALID_EMAIL);
         }
+
+        final User user = userRepository.findByEmail(email);
+        if (user == null) {
+            return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.USER_NOT_FOUND);
+        }
+        return ResponseWrapper.success(user);
     }
 
     /**
@@ -90,13 +84,8 @@ public class UserServiceImpl implements UserService {
         if (!Validators.isValidNameLength(user.getName())) {
             return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.NAME_TOO_LONG);
         }
-
-        try {
-            final User savedUser = userRepository.save(user);
-            return ResponseWrapper.success(savedUser, SuccessMessages.USER_CREATED);
-        } catch (Exception e) {
-            return ResponseWrapper.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ErrorMessages.GENERAL_ERROR);
-        }
+        final User savedUser = userRepository.save(user);
+        return ResponseWrapper.success(savedUser, SuccessMessages.USER_CREATED);
     }
 
     /**
@@ -110,7 +99,7 @@ public class UserServiceImpl implements UserService {
     public ResponseWrapper<User> updateUser(String id, User user) {
         final Optional<User> existingUserOptional = userRepository.findById(id);
         if (existingUserOptional.isEmpty()) {
-            return ResponseWrapper.error(HttpStatus.UNPROCESSABLE_ENTITY.value(), ErrorMessages.USER_NOT_FOUND);
+            return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.USER_NOT_FOUND);
         }
 
         final User existingUser = existingUserOptional.get();
@@ -123,12 +112,8 @@ public class UserServiceImpl implements UserService {
         if (user.getName() != null) existingUser.setName(user.getName());
         if (user.getEmail() != null) existingUser.setEmail(user.getEmail());
 
-        try {
-            final User updatedUser = userRepository.save(existingUser);
-            return ResponseWrapper.success(updatedUser, SuccessMessages.USER_UPDATED);
-        } catch (Exception e) {
-            return ResponseWrapper.error(HttpStatus.INTERNAL_SERVER_ERROR.value(), ErrorMessages.GENERAL_ERROR);
-        }
+        final User updatedUser = userRepository.save(existingUser);
+        return ResponseWrapper.success(updatedUser, SuccessMessages.USER_UPDATED);
     }
 
     /**
@@ -144,7 +129,7 @@ public class UserServiceImpl implements UserService {
             userRepository.delete(user.get());
             return ResponseWrapper.success(null, SuccessMessages.USER_DELETED);
         } else {
-            return ResponseWrapper.error(HttpStatus.UNPROCESSABLE_ENTITY.value(), ErrorMessages.USER_NOT_FOUND);
+            return ResponseWrapper.error(HttpStatus.BAD_REQUEST.value(), ErrorMessages.USER_NOT_FOUND);
         }
     }
 

@@ -4,6 +4,7 @@ import com.example.demo.service.UserService;
 import com.example.demo.models.ResponseWrapper;
 import com.example.demo.models.User;
 import com.example.demo.utils.constants.MappingConstants;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,12 +13,8 @@ import java.util.List;
 @RestController
 @RequestMapping(MappingConstants.USERS)
 public class UserController {
-
-    private final UserService userService;
-
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    @Autowired
+    private UserService userService;
 
     @GetMapping
     public ResponseEntity<ResponseWrapper<List<User>>> getAllUsers() {
