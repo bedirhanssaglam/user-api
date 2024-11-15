@@ -1,5 +1,7 @@
 package com.example.demo.models;
 
+import org.springframework.http.HttpStatus;
+
 public class ResponseWrapper<T> {
     // Status code of the response (e.g., 200 for success, 500 for error)
     private int code;
@@ -49,12 +51,12 @@ public class ResponseWrapper<T> {
 
     // Helper method to create a successful response with data
     public static <T> ResponseWrapper<T> success(T data) {
-        return new ResponseWrapper<>(200, data, null); // 200 is HTTP status code for OK
+        return new ResponseWrapper<>(HttpStatus.OK.value(), data, null); // 200 is HTTP status code for OK
     }
 
     // Helper method to create a successful response with data and a custom message
     public static <T> ResponseWrapper<T> success(T data, String message) {
-        return new ResponseWrapper<>(200, data, message); // 200 is HTTP status code for OK
+        return new ResponseWrapper<>(HttpStatus.OK.value(), data, message); // 200 is HTTP status code for OK
     }
 
     // Helper method to create an error response with custom code and message

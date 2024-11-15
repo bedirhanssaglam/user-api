@@ -25,6 +25,6 @@ public class MappingConstants {
     /**
      * The constant for the '/name/{name}' endpoint, used for accessing users by their name.
      */
-    public static final String NAME = "/name/{name}";
+    public static final String NAME = "/name/";
 
 }
